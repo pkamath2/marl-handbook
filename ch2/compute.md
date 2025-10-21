@@ -8,7 +8,6 @@ workflow that you may be used to.
 
 This document is a quick start guide for getting set up and accessing NYU HPC (high performance compute) infrastructure. It is not meant to be a comprehensive document, but something to get you started with working with HPC if you are new to NYU (and MARL). Please read the documents listed below for a more comprehensive understanding of the compute infrastructure. 
 
-P.S. Any corrections/updates to this document will be greatly appreciated. 
 
 ## Table Of Contents
 1. [Accessing HPC and First Time Login](#Accessing-HPC-and-First-Time-Login)
@@ -39,7 +38,7 @@ P.S. Any corrections/updates to this document will be greatly appreciated.
     For more details see [[2]](https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc/getting-and-renewing-an-account?authuser=0) in the document links above. 
 
 * Once you receive an email that access is complete, update SSH Config on your local machine. 
-    For Mac update ~/.ssh/config  with the following: 
+    For Mac or Linux, update ~/.ssh/config  with the following: 
     ```
     Host greene.hpc.nyu.edu dtn.hpc.nyu.edu gw.hpc.nyu.edu
       StrictHostKeyChecking no
@@ -61,7 +60,7 @@ P.S. Any corrections/updates to this document will be greatly appreciated.
 * Your home should be under `/home/<Net ID>`. Run `myquota` to see your disk space allocations.
 
     ```
-    [pk3251@log-2 ~]$ myquota
+    [<your Net ID>@log-2 ~]$ myquota
     
     Hostname: log-2 at Thu Sep 11 02:42:29 PM EDT 2025
     
@@ -239,10 +238,10 @@ A quick example to submit an interactive job to the **CPU** cluster:
 
 A quick example to submit an interactive job to the **GPU** cluster:
 
-``srun --cpus-per-task=12 --gres=gpu --mem=32GB --time=2:00:00 --account=pr_###_function --pty /bin/bas``  
+``srun --cpus-per-task=12 --gres=gpu --mem=32GB --time=2:00:00 --account=pr_###_function --pty /bin/bash``  
 
 Specify number of GPUs you need: 
-``srun --cpus-per-task=12 --gres=gpu:2 --mem=32GB --time=2:00:00 --account=pr_###_function --pty /bin/bas``
+``srun --cpus-per-task=12 --gres=gpu:2 --mem=32GB --time=2:00:00 --account=pr_###_function --pty /bin/bash``
 
 Specify the GPU you want to run this job on (see [[7]](https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/hardware-specs) for list of GPUs):
 ``srun --cpus-per-task=12 --gres=gpu:v100:1 --mem=32GB --time=2:00:00 --account=pr_###_function --pty /bin/bash``  
@@ -365,6 +364,5 @@ If you are off-campus, you will need to go through either the VPN or an SSH gate
 You will need some basic familiarity with the UNIX command line, see [here](unix) for a quick overview.
 
 
-[Singularity and conda](environment) -->
 
 
