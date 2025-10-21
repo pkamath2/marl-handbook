@@ -24,7 +24,7 @@ This document is a quick start guide for getting set up and accessing NYU HPC (h
 [3] Raise a new access request: https://identity.it.nyu.edu/identityiq/home.jsf  
 [4] Conda and Singularity - 1: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/software/open-ondemand-ood-with-condasingularity?authuser=0   
 [5] Conda and Singularity - 2: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/software/singularity-with-miniconda   
-[6] Singuconda - https://github.com/beasteers/singuconda/tree/main
+[6] Singuconda - https://github.com/beasteers/singuconda/tree/main    
 [7] NYU HPC GPU List - https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/hardware-specs   
 [8] HPC Diskspace Hardware Specs - https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/hpc-storage/hardware-specs    
 
@@ -167,7 +167,7 @@ chmod +x ~/singuconda
 
     Choose an appropriate Singularity Image File (SIF) based on your Ubuntu versioning, CUDA version requirements etc.
 
-    I chose Cuda12 below. 
+    I chose cuda12 below. 
 
     ```
     You choose "myproject-overlay-15GB-500K"
