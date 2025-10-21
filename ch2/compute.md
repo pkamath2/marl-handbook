@@ -17,7 +17,7 @@ This document is a quick start guide for getting set up and accessing NYU HPC (h
 5. [Using VSCode to debug code using GPU Cluster](#using-vscode-to-debug-code-using-gpu-cluster)
 
 
-**Note**: Please skim through these important links/documents before reading this "short getting started guide". 
+**Note**: Please skim through these important links/documents before reading this "short getting started guide". Most of these link might be available only on NYU network via campus WiFi or VPN.   
 
 [1] Accessing HPC: https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc?authuser=0   
 [2] Getting a new account: https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc/getting-and-renewing-an-account?authuser=0  
@@ -26,18 +26,19 @@ This document is a quick start guide for getting set up and accessing NYU HPC (h
 [5] Conda and Singularity - 2: https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/software/singularity-with-miniconda   
 [6] Singuconda - https://github.com/beasteers/singuconda/tree/main
 [7] NYU HPC GPU List - https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/greene/hardware-specs   
+[8] HPC Diskspace Hardware Specs - https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/hpc-storage/hardware-specs    
 
 
 
 ## Accessing HPC and First Time Login
 
-* Raise a request to get access to HPC using this link - https://identity.it.nyu.edu/identityiq/home.jsf. This step creates your Unix id and a user profile on HPC.  
+* Raise a request to get access to HPC using this link - https://identity.it.nyu.edu/identityiq/home.jsf. This step creates your Unix id and a user profile on HPC. You will need to be on the NYU network (either via campus WiFi or VPN) to access the link.  
 
     On the request webpage, go to Side bar -> Manage Access -> Request HPC Account. Fill in the necessary details. Your request should be complete once your supervisor/faculty approves your request (this takes approximately a few hours).   
   
     For more details see [[2]](https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc/getting-and-renewing-an-account?authuser=0) in the document links above. 
 
-* Once you receive an email that access is complete, update SSH Config on your local machine. 
+* Once you receive an email that access is complete, update SSH Config on your local machine. Replace `<Net ID>` with your NYU Net ID.
     For Mac or Linux, update ~/.ssh/config  with the following: 
     ```
     Host greene.hpc.nyu.edu dtn.hpc.nyu.edu gw.hpc.nyu.edu
@@ -46,6 +47,7 @@ This document is a quick start guide for getting set up and accessing NYU HPC (h
       ForwardAgent yes
       UserKnownHostsFile /dev/null
       LogLevel ERROR
+      User <Net ID>
     ```
     
     For Windows and other SSH Config options please see [[1]](https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc?authuser=0 ) in the document links above.
@@ -57,7 +59,7 @@ This document is a quick start guide for getting set up and accessing NYU HPC (h
 
     Also, see how to set up SSH Keys on your local machine to not have to use your Net ID password on every login in the document at [[1]](https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc?authuser=0 )
 
-* Your home should be under `/home/<Net ID>`. Run `myquota` to see your disk space allocations.
+* Your home should be under `/home/<Net ID>`. Run `myquota` to see your disk space allocations. For detailed explanations on the type and use of each of these disks please see the HPC hardware specs at [[8]](https://sites.google.com/nyu.edu/nyu-hpc/hpc-systems/hpc-storage/hardware-specs). 
 
     ```
     [<your Net ID>@log-2 ~]$ myquota
@@ -77,13 +79,13 @@ This document is a quick start guide for getting set up and accessing NYU HPC (h
 
     Please also reach to your supervisor (or Brian McFee) for access to the MARL datasets directory under `/scratch`. 
 
-    Also, make a note of the limit on the number of files you can save under each filesystem, and not just the space. HPC diskspace is better at accomodating a few large files than multiple small files.   
+    Also, make a note of the limit on the number of files you can save under each filesystem, and not just the space. HPC diskspace is better at accomodating a fewer large files than multiple smaller files.   
 
 
 * Create some symlinks inside your home directory to /scratch and /vast folders for ease of access.  
 
     ```
-    mkdir /scratch/<Net ID> #In case this does not exist.  
+    ls /scratch/<Net ID> ## This should exist for your Net ID. If not, please raise a support request.  
     cd ~ 
     ln -s /scratch/<Net ID> scratch  
     ln -s /vast/<Net ID> vast
@@ -252,7 +254,7 @@ After the interactive job starts, your session will auto-login into a GPU node. 
 
 ```
 $ ./singrw # Assuming you have already created a container image at the location, start it in read-write mode.
-$ pip install jupyterlab
+$ conda install jupyterlab
 $ jupyter lab --no-browser -port=9000 -ip=0.0.0.0
 ```
 
@@ -361,7 +363,7 @@ This is only possible after your HPC account has been created, and you will need
 First, make sure to read through the documentation on how to access the cluster.
 If you are off-campus, you will need to go through either the VPN or an SSH gateway, as described [here](https://sites.google.com/nyu.edu/nyu-hpc/accessing-hpc#h.5v318r5hu99p).
 
-You will need some basic familiarity with the UNIX command line, see [here](unix) for a quick overview.
+You will need some basic familiarity with the UNIX command line, see [here](unix) for a quick overview.-->
 
 
 
